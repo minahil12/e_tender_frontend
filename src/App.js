@@ -1,25 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Switch,Route, Redirect} from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Navigation from './components/navbar'
+import Tenders from './components/Tenders';
+import AboutUs from './components/AboutUs';
+import ContactUs from './components/ContactUs';
+import Login from './components/Login';
+import SignUp from './components/SignUp';
+import Footer from './components/footer';
+import Terms from './components/Terms';
+import HomePage from './components/HomePage'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+
+
+class App extends React.Component {
+  constructor(props){
+    super(props)
+    this.state={apiResponse: ""}
+  }
+
+  callAPI(){
+    fetch("http://127.0.0.1:8000/api/")
+    .then(res=> res.text())
+    .then(res=> this.setState({apiResponse: res}));
+  }
+
+  componentWillMount(){
+    this.callAPI();
+  }
+  render(){
+    return(
+     
+      <React.Fragment>
+         <ToastContainer/>
+      <Navigation /> 
+      <main className="container">
+        
+        <Switch>
+          <Route path="/aboutus" component={AboutUs} />
+          <Route path="/contactus" component={ContactUs} />
+          <Route path="/login" component={Login} />
+          <Route path="/register" component={SignUp} />
+          <Route path="/terms" component={Terms} />
+          <Route path="/profile" component={Tenders} />
+          <Route path="/home" component={HomePage} />
+          <Redirect from="/" exact to="/home" />
+          
+         
+           
+        </Switch>
+       
+        
+      </main>
+      <Footer />
+      </React.Fragment>
+     
+    );
+  }
 }
-
 export default App;
