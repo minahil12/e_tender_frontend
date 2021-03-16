@@ -7,7 +7,7 @@ class UserServices extends GenericServices {
 
   login = (email, password) =>
     new Promise((resolve, reject) => {
-      this.post("/buyer/loginBuyer", { email, password }).then((token) => {
+      this.post("/api/login/", { email, password }).then((token) => {
         localStorage.setItem("token", token);
         resolve(token);
       });

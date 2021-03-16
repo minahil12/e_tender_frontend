@@ -7,11 +7,12 @@ import Tenders from './components/Tenders';
 import AboutUs from './components/AboutUs';
 import ContactUs from './components/ContactUs';
 import Login from './components/Login';
+import Logout from './components/Logout';
 import SignUp from './components/SignUp';
 import Footer from './components/footer';
 import Terms from './components/Terms';
 import HomePage from './components/HomePage'
-
+import auth from './services/authServices'
 
 
 
@@ -19,6 +20,12 @@ class App extends React.Component {
   constructor(props){
     super(props)
     this.state={apiResponse: ""}
+  }
+
+  componentDidMount(){
+    const user = auth.getCurrentUser();
+    this.setState({user})
+    
   }
 
   callAPI(){
@@ -31,11 +38,12 @@ class App extends React.Component {
     this.callAPI();
   }
   render(){
+    const {user} = this.state;
     return(
      
       <React.Fragment>
          <ToastContainer/>
-      <Navigation /> 
+      <Navigation user={user}/> 
       <main className="container">
         
         <Switch>
@@ -46,6 +54,7 @@ class App extends React.Component {
           <Route path="/terms" component={Terms} />
           <Route path="/profile" component={Tenders} />
           <Route path="/home" component={HomePage} />
+          <Route path="/logout" component={Logout} />
           <Redirect from="/" exact to="/home" />
           
          

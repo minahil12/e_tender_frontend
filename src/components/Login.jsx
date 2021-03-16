@@ -1,37 +1,53 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import Form from "../common/form";
+import Joi from "joi-browser";
+import auth from "../services/authServices";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure();
 
-class Login extends Component {
-    handleSubmit = e=>{
-        e.preventDefault();
+class Login extends Form {
+  state = {
+    data: { username: "", password: "" },
+    errors: {},
+  };
 
-        console.log("Submitted");
+  schema = {
+    username: Joi.string().required().label("Username"),
+    password: Joi.string().required().label("Password"),
+  };
+
+  doSubmit = async () => {
+    try {
+      const { data } = this.state;
+      await auth.login(data.username, data.password);
+      window.location = "/";
+      toast.success("Successful Login");
+    } catch (ex) {
+      if (ex.response && ex.respone.status === 400) {
+        const errors = { ...this.state.errors };
+        errors.username = ex.response.data;
+        this.setState({ errors });
+        toast.error("An error occurred");
+      }
     }
-    
-    render() { 
-        return ( 
-            <div>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                    </div>
-                    <div class="col-md-6">
-                    <h1>Login</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <div className="form-group">
-                        <label htmlFor="username">Username</label>
-                        <input id="username" type="text" className="form-control" autoFocus/>
-                    </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Password</label>
-                        <input id="password" type="text" className="form-control"/>
-                    </div>
-                    <button className="btn btn-primary ">Submit</button>
-                </form>
-                </div>
-                </div>
-            </div>
-         );
-    }
+  };
+
+  render() {
+    return (
+      <div
+        className="col-xl-3 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4"
+        style={{}}
+      >
+        <h1 style={{ marginBottom: "53px" }}>Login</h1>
+        <form onSubmit={this.handleSubmit}>
+          {this.renderInput("username", "Username")}
+          {this.renderInput("password", "Password", "password")}
+          {this.renderButton("Login")}
+        </form>
+      </div>
+    );
+  }
 }
- 
+
 export default Login;
