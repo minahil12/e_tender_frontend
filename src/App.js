@@ -44,7 +44,7 @@ class App extends React.Component {
       <React.Fragment>
          <ToastContainer/>
       <Navigation user={user}/> 
-      <main className="container">
+      
         
         <Switch>
           <Route path="/aboutus" component={AboutUs} />
@@ -52,7 +52,7 @@ class App extends React.Component {
           <Route path="/login" component={Login} />
           <Route path="/register" component={SignUp} />
           <Route path="/terms" component={Terms} />
-          <Route path="/profile" component={Tenders} />
+          <Route path="/tenders" component={Tenders} />
           <Route path="/home" component={HomePage} />
           <Route path="/logout" component={Logout} />
           <Redirect from="/" exact to="/home" />
@@ -62,7 +62,7 @@ class App extends React.Component {
         </Switch>
        
         
-      </main>
+     
       <Footer />
       </React.Fragment>
      

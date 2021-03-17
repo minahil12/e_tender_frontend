@@ -12,6 +12,25 @@ code {
     monospace;
 }
 
-.navbar {
-  margin-bottom: 30px;
+.navbar-nav {
+  margin-left: auto;
+  font-weight: 400;
+}
+.navbar-brand {
+  font-weight: bold;
+}
+#btns {
+  border-radius: 1rem;
+  //padding: 5px 10px 5px 10px;
+  background-color: #16c79a;
+  color: white;
+}
+.jumbotron {
+  background-image: url("./pictures/jumbotron.PNG");
+  background-size: cover;
+  height: 450px;
+}
+.form-group .form-control {
+  width: 80%;
+  border-radius: 1rem;
 }

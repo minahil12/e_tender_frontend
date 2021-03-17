@@ -3,7 +3,10 @@ import { Link, NavLink } from "react-router-dom";
 
 const NavBar = ({ user }) => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark success-color-dark">
+    <nav
+      className="navbar navbar-expand-lg navbar-dark "
+      style={{ backgroundColor: "#16c79a" }}
+    >
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">
           E-Tender
@@ -34,9 +37,6 @@ const NavBar = ({ user }) => {
               Search
             </NavLink>
 
-            <NavLink className="nav-link" to="/profile">
-              Profile
-            </NavLink>
             {!user && (
               <React.Fragment>
                 <NavLink className="nav-link" to="/login">

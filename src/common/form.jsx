@@ -46,7 +46,7 @@ class Form extends Component {
 
   renderButton(label) {
     return (
-      <button className="btn btn-warning" onClick>
+      <button className="btn btn-primary" onClick>
         {label}
       </button>
     );
