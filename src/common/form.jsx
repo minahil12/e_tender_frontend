@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./input";
-
+import TextField from "./textfield";
+import DropDown from "./dropdownCategory";
+import Dropdown from "./dropdownStatus";
+import AutoInput from "./autoInput";
 class Form extends Component {
   state = {
     data: {},
@@ -25,7 +28,7 @@ class Form extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
+    console.log("in handle Submit");
     const errors = this.validate();
     this.setState({ errors: errors || {} });
     if (errors) return;
@@ -46,12 +49,22 @@ class Form extends Component {
 
   renderButton(label) {
     return (
-      <button className="btn btn-primary" onClick>
+      <button
+        className="btn "
+        style={{
+          borderRadius: "1rem",
+          padding: "7px 20px 7px 20px",
+          backgroundColor: "#16c79a",
+          color: "white",
+          height: "80%",
+          fontSize: "16px",
+        }}
+        onClick
+      >
         {label}
       </button>
     );
   }
-
   renderInput(name, label, type = "text") {
     const { data, errors } = this.state;
     return (
@@ -59,8 +72,98 @@ class Form extends Component {
         type={type}
         name={name}
         value={data[name]}
+        //label={label}
+        placeholder={label}
+        onChange={this.handleChange}
+        error={errors[name]}
+      />
+    );
+  }
+  renderInput1(name, label, value, type = "text") {
+    const { data, errors } = this.state;
+    return (
+      <AutoInput
+        type={type}
+        name={name}
+        value={value}
+        //label={label}
+        placeholder={label}
+        onChange={this.handleChange(value)}
+        error={errors[name]}
+      />
+    );
+  }
+  renderFile(name, label, value, type = "file") {
+    const { data, errors } = this.state;
+    return (
+      <AutoInput
+        type={type}
+        name={name}
+        value={value}
+        //label={label}
+        placeholder={label}
+        onChange={this.handleChange}
+        error={errors[name]}
+      />
+    );
+  }
+
+  renderTextField(name, label, type = "text") {
+    const { data, errors } = this.state;
+    return (
+      <TextField
+        type={type}
+        name={name}
+        value={data[name]}
         label={label}
         placeholder={label}
+        onChange={this.handleChange}
+        error={errors[name]}
+      />
+    );
+  }
+  renderDropDown1(
+    name,
+    label,
+    value1,
+    value2,
+    value3,
+    value4,
+    value5,
+    value6,
+    value7,
+    type = "text"
+  ) {
+    const { data, errors } = this.state;
+    return (
+      <DropDown
+        type={type}
+        name={name}
+        value={data[name]}
+        label={label}
+        value1={value1}
+        value2={value2}
+        value3={value3}
+        value4={value4}
+        value5={value5}
+        value6={value6}
+        value7={value7}
+        onChange={this.handleChange}
+        error={errors[name]}
+      />
+    );
+  }
+
+  renderDropDown2(name, label, value1, value2, type = "text") {
+    const { data, errors } = this.state;
+    return (
+      <Dropdown
+        type={type}
+        name={name}
+        value={data[name]}
+        label={label}
+        value1={value1}
+        value2={value2}
         onChange={this.handleChange}
         error={errors[name]}
       />

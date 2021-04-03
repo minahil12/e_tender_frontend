@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-
+import CategoriesCard from "./CategoriesCards";
+import LatestTenders from "./latestTenders";
 const HomePage = () => {
   return (
     <div>
@@ -9,7 +10,7 @@ const HomePage = () => {
       <div class="row container">
         <div class="col-md-6 text-center">
           <Button
-            id="btns"
+            id="mbtns"
             className="btn btn-lg"
             style={{
               backgroundColor: "#16c79a",
@@ -24,7 +25,7 @@ const HomePage = () => {
         </div>
         <div class="col-md-6 text-center">
           <Button
-            id="btns"
+            id="mbtns"
             className="btn btn-lg"
             component={Link}
             to="/tenders"
@@ -42,7 +43,20 @@ const HomePage = () => {
       </div>
       <br />
       <div className="container text-center">
-        <h3>Categories</h3>
+        <h2>Categories</h2>
+        <br />
+        <CategoriesCard />
+      </div>
+      <br />
+      <br />
+      <div className="container text-center solid">
+        <h2>Latest Tenders</h2>
+        <LatestTenders />
+        <br />
+      </div>
+      <div className="container text-center">
+        <h2>Our Clients</h2>
+        <br />
       </div>
     </div>
   );

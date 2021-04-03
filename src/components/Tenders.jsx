@@ -20,9 +20,7 @@ const Tenders = () => {
       });
   }, [setAppState]);
   return (
-    <div className="container">
-      <h2>Latest Tenders</h2>
-
+    <div className="container" style={{ marginTop: "50px" }}>
       <PostLoading isLoading={appState.loading} posts={appState.posts} />
     </div>
   );

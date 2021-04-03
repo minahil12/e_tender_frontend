@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 
-const Input = ({ name, label, error, ...rest }) => {
+const AutoInput = ({ name, label, value, error, ...rest }) => {
   return (
     <div className="form-group">
       <div className="row">
         <div className="col">
-          <input {...rest} name={name} id={name} className="form-control" />
+          <input
+            {...rest}
+            name={name}
+            id={name}
+            value={value}
+            className="form-control"
+          />
         </div>
       </div>
 
@@ -14,4 +20,4 @@ const Input = ({ name, label, error, ...rest }) => {
   );
 };
 
-export default Input;
+export default AutoInput;

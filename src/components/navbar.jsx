@@ -27,34 +27,35 @@ const NavBar = ({ user }) => {
             <NavLink className="nav-link active" aria-current="page" to="/home">
               Home
             </NavLink>
-            <NavLink className="nav-link" to="/aboutus">
+            <NavLink className="nav-link active" to="/aboutus">
               About Us
             </NavLink>
-            <NavLink className="nav-link" to="/contactus">
+            <NavLink className="nav-link active" to="/contactus">
               Contact Us
             </NavLink>
-            <NavLink className="nav-link" to="#">
+            <NavLink className="nav-link active" to="#">
               Search
+            </NavLink>
+
+            <NavLink className="nav-link active" to="/publish">
+              Publish Tender
             </NavLink>
 
             {!user && (
               <React.Fragment>
-                <NavLink className="nav-link" to="/login">
-                  LOGIN
+                <NavLink className="nav-link active" to="/login">
+                  Login
                 </NavLink>
-                <NavLink className="nav-link" to="/register">
-                  SIGNUP
+                <NavLink className="nav-link active" to="/register">
+                  Signup
                 </NavLink>
               </React.Fragment>
             )}
             {user && (
               <React.Fragment>
                 <NavLink to="/home">{user.name}</NavLink>
-                <NavLink className="nav-link" to="/publish">
-                  Publish Tender
-                </NavLink>
 
-                <NavLink className="nav-link" to="/logout">
+                <NavLink className="nav-link active" to="/logout">
                   LOGOUT
                 </NavLink>
               </React.Fragment>

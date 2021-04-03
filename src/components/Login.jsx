@@ -35,9 +35,9 @@ class Login extends Form {
 
   render() {
     return (
-      <div className="col-md-6 mx-auto text-center form p-4" style={{}}>
-        <h1 style={{ marginBottom: "53px" }}>Login</h1>
-        <form onSubmit={this.handleSubmit}>
+      <div className="col-md-6 mx-auto text-center form p-4 mb-5">
+        <h3 style={{ marginTop: "50px", marginBottom: "15px" }}>Login</h3>
+        <form onSubmit={this.handleSubmit} className="ml-5">
           {this.renderInput("username", "Username")}
           {this.renderInput("password", "Password", "password")}
           {this.renderButton("Login")}

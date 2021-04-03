@@ -1,5 +1,5 @@
 import React, { useState, Component } from "react";
-import axiosInstance from "axios";
+import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
 import userServices from "../services/UserService";
 import { toast } from "react-toastify";
@@ -95,8 +95,8 @@ export default function Register() {
               />
             </div>
 
-            <button
-              className="btn btn-primary "
+            <Button
+              id="btns"
               onClick={(e) => {
                 userServices
                   .register(
@@ -121,8 +121,8 @@ export default function Register() {
                   });
               }}
             >
-              Submit
-            </button>
+              Register
+            </Button>
           </form>
         </div>
       </div>

@@ -1,85 +1,41 @@
 import React from "react";
 import Button from "@material-ui/core/Button";
+import Form from "../common/form";
 
-const ContactUs = () => {
-  return (
-    <div className="container ">
-      <section className="mb-4">
-        <h2 class="h1-responsive font-weight-bold text-center my-4">
-          Contact us
-        </h2>
-        <div className="row">
-          <div class="col-md-6 mb-md-0 mb-5">
-            <form
-              id="contact-form"
-              name="contact-form"
-              action="mail.php"
-              method="POST"
-            >
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="md-form mb-0">
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      class="form-control"
-                    />
-                    <label for="name" class="">
-                      Your name
-                    </label>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="md-form mb-0">
-                      <input
-                        type="text"
-                        id="email"
-                        name="email"
-                        class="form-control"
-                      />
-                      <label for="email" class="">
-                        Your email
-                      </label>
-                    </div>
-                  </div>
-                </div>
+class ContactUs extends Form {
+  render() {
+    return (
+      <div className="container">
+        <h3 className="text-center mb-5 mt-5">Contact </h3>
+        <div class="row">
+          <div className="col-md-6">
+            <div className="row mr-2">
+              <div className="col-md-6">{this.renderInput("name", "Name")}</div>
+              <div className="col-md-6 ">
+                {this.renderInput("email", "Email")}
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="md-form mb-0">
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      class="form-control"
-                    />
-                    <label for="subject" class="">
-                      Subject
-                    </label>
-                  </div>
-                </div>
+            </div>
+            <div className="row">
+              <div className="col-md-12">
+                {this.renderInput("subject", "Subject")}
               </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="md-form">
-                    <textarea
-                      type="text"
-                      id="message"
-                      name="message"
-                      rows="2"
-                      class="form-control md-textarea"
-                    ></textarea>
-                    <label for="message">Your message</label>
-                  </div>
-                </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                {this.renderTextField("message", "Message")}
               </div>
-              <Button id="btns">Submit</Button>
-            </form>
+            </div>
+            <div className="row">
+              <div className="col text-center">
+                {this.renderButton("Submit")}
+              </div>
+            </div>
           </div>
+          <div className="col-md-6">Map</div>
         </div>
-      </section>
-    </div>
-  );
-};
+      </div>
+    );
+  }
+}
 
 export default ContactUs;

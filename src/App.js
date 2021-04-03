@@ -13,7 +13,12 @@ import Footer from './components/footer';
 import Terms from './components/Terms';
 import HomePage from './components/HomePage'
 import auth from './services/authServices'
-
+import PublishTender from './components/Publishtender';
+import LatestTenders from './components/latestTenders';
+import Details from './common/details';
+import FilteredCategory from './components/filteredCategory';
+import PlaceBid from './components/PlaceBid'
+import MyTenders from './components/myTenders';
 
 
 class App extends React.Component {
@@ -24,6 +29,7 @@ class App extends React.Component {
 
   componentDidMount(){
     const user = auth.getCurrentUser();
+    console.log(user)
     this.setState({user})
     
   }
@@ -55,6 +61,13 @@ class App extends React.Component {
           <Route path="/tenders" component={Tenders} />
           <Route path="/home" component={HomePage} />
           <Route path="/logout" component={Logout} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/details" component={Details} />
+          <Route path="/category" component={FilteredCategory} />
+          <Route path="/latest" component={LatestTenders} />
+          <Route path="/publish" component={PublishTender} />
+          <Route path="/place-bid" component={PlaceBid} />
+          <Route path="/my-tenders" component={MyTenders} />
           <Redirect from="/" exact to="/home" />
           
          

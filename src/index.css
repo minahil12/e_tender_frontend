@@ -6,12 +6,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+h3 {
+  color: darkgreen;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
+.solid {
+  border-style: solid;
+  border-radius: 0rem;
+  border-color: lightgray;
+}
 .navbar-nav {
   margin-left: auto;
   font-weight: 400;
@@ -21,9 +27,30 @@ code {
 }
 #btns {
   border-radius: 1rem;
-  //padding: 5px 10px 5px 10px;
+  padding: 5px 15px 5px 15px;
   background-color: #16c79a;
   color: white;
+}
+#mbtns {
+  border-radius: 1rem;
+  padding: 20px;
+  background-color: #16c79a;
+  color: white;
+}
+#bg-title {
+  background-color: #16c79a;
+  color: white;
+  padding: 3px;
+  font-weight: 600;
+  border-radius: 2rem;
+}
+#d-content {
+  margin-left: 150px;
+  margin-right: 150px;
+}
+#d-title {
+  font-weight: bold;
+  font-size: 16px;
 }
 .jumbotron {
   background-image: url("./pictures/jumbotron.PNG");
@@ -33,4 +60,24 @@ code {
 .form-group .form-control {
   width: 80%;
   border-radius: 1rem;
+}
+img.card-img-top {
+  height: 180px;
+}
+
+.card-img-overlay {
+  margin-top: 105px;
+  color: white;
+  font-weight: 900;
+  font-size: 18px;
+}
+h2 {
+  color: #16c79a;
+}
+
+.btn {
+  border-radius: 1rem;
+  padding: 5px 15px 5px 15px;
+  background-color: #16c79a;
+  color: white;
 }
