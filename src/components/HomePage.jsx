@@ -19,6 +19,8 @@ const HomePage = () => {
               paddingRight: "100px",
               marginLeft: "80px",
             }}
+            component={Link}
+            to="/search"
           >
             Search For Tenders
           </Button>

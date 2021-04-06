@@ -30,6 +30,10 @@ export function publishTender(data){
     return http.post(apiEndPoint,data)
 }
 
+export function searchTender(data){
+    const search="http://127.0.0.1:8000/api/publish-tender/?search="+data
+    return http.get(search)
+}
 export function deleteTender(id){
     const getTender="http://127.0.0.1:8000/api/publish-tender/"+id+"/"
     return http.delete(getTender)
@@ -60,5 +64,7 @@ export default{
     getCurrentUser,
     publishTender,
     getTenders,
-    deleteTender
+    deleteTender,
+    searchTender
+
 }

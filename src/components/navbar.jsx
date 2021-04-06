@@ -33,7 +33,7 @@ const NavBar = ({ user }) => {
             <NavLink className="nav-link active" to="/contactus">
               Contact Us
             </NavLink>
-            <NavLink className="nav-link active" to="#">
+            <NavLink className="nav-link active" to="/search">
               Search
             </NavLink>
 

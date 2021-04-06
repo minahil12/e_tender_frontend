@@ -50,6 +50,7 @@ const Posts = (props) => {
                   <h5 class="card-text">Sector: {post.category}</h5>
                   <p class="card-text">Description: {post.description}</p>
                   <p class="card-text">Action Deadline: {post.last_date}</p>
+
                   <Button
                     id="btns"
                     onClick={(e) => {
