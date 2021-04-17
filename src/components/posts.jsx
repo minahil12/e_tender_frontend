@@ -50,7 +50,12 @@ const Posts = (props) => {
                   <h5 class="card-text">Sector: {post.category}</h5>
                   <p class="card-text">Description: {post.description}</p>
                   <p class="card-text">Action Deadline: {post.last_date}</p>
-
+                  <a href={post.file_uploaded} download="My_File.pdf">
+                    {" "}
+                    Soft Copy{" "}
+                  </a>
+                  <br />
+                  <br />
                   <Button
                     id="btns"
                     onClick={(e) => {

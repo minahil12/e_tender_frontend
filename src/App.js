@@ -20,6 +20,10 @@ import FilteredCategory from './components/filteredCategory';
 import PlaceBid from './components/PlaceBid'
 import MyTenders from './components/myTenders';
 import Search from './components/Search';
+import Test from './components/test';
+import MyBids from './components/myBids';
+import SearchBids from './components/bids';
+import BidDetails from './common/bidDetails';
 
 
 class App extends React.Component {
@@ -50,7 +54,8 @@ class App extends React.Component {
      
       <React.Fragment>
          <ToastContainer/>
-      <Navigation user={user}/> 
+     
+      <Test user={user}/>
       
         
         <Switch>
@@ -69,9 +74,13 @@ class App extends React.Component {
           <Route path="/publish" component={PublishTender} />
           <Route path="/place-bid" component={PlaceBid} />
           <Route path="/my-tenders" component={MyTenders} />
+          <Route path="/my-bids" component={MyBids} />
           <Route path="/search" component={Search} />
+          <Route path="/viewbids" component={SearchBids} />
+          <Route path="/bid-details" component={BidDetails} />
           <Redirect from="/" exact to="/home" />
           
+          <Route path="/test" component={Test}/>
          
            
         </Switch>

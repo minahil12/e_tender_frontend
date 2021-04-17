@@ -18,6 +18,9 @@ export async function getTenders(){
     const getTender="http://127.0.0.1:8000/api/publish-tender/"
     return http.get(getTender)
 }
+export async function getBids(){
+    return http.get("http://127.0.0.1:8000/api/bid/")
+}
 const apiEndPoint = "/api/publish-tender/"
 /**
  * export async function publishTender(organization_name, title, category, availibility,region,
@@ -34,25 +37,36 @@ export function searchTender(data){
     const search="http://127.0.0.1:8000/api/publish-tender/?search="+data
     return http.get(search)
 }
+
+export function searchBids(data){
+    const search="http://127.0.0.1:8000/api/bid/?search="+data
+    return http.get(search)
+}
 export function deleteTender(id){
     const getTender="http://127.0.0.1:8000/api/publish-tender/"+id+"/"
     return http.delete(getTender)
 }
+export function deleteBid(id){
+    const getTender="http://127.0.0.1:8000/api/bid/"+id+"/"
+    return http.delete(getTender)
+}
 
     const apiEndPoint1 = "/api/bid/"
-    export async function postBid(name, contact, no_of_days, tenderId,bidding_amount){
-            return http.post(apiEndPoint1, {name, contact, no_of_days, tenderId,bidding_amount})
+    export async function postBid(data){
+            return http.post(apiEndPoint1, data)
         }
     
 export function logout(){
     localStorage.removeItem(tokenKey);
+    localStorage.removeItem("organization");
 }
 
 export function getCurrentUser(){
     try {
         const jwt = localStorage.getItem(tokenKey);
+        const jwt2 = localStorage.getItem("organization");
 
-       return jwt;
+       return jwt,jwt2;
        
       } catch (ex) {
         return null
@@ -65,6 +79,8 @@ export default{
     publishTender,
     getTenders,
     deleteTender,
-    searchTender
+    searchTender,
+    getBids,
+    searchBids
 
 }

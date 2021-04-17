@@ -81,3 +81,31 @@ h2 {
   background-color: #16c79a;
   color: white;
 }
+a.makeStyles-link-1:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+#primary-search-account-menu
+  > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded {
+  margin-top: 40px;
+}
+#primary-search-account-menu
+  > div.MuiPaper-root.MuiMenu-paper.MuiPopover-paper.MuiPaper-elevation8.MuiPaper-rounded
+  > ul {
+  padding: 0;
+}
+#profileCard {
+  width: 5rem;
+  height: 3rem;
+  margin-bottom: 1rem;
+}
+hr.solid {
+  border-top: 3px solid #16c79a;
+}
+h6.MuiTypography-h6 {
+  font-size: 1rem;
+}
+h6.MuiTypography-h6 a:hover {
+  text-decoration: none;
+}

@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import axios from "axios";
+import * as auth from "../services/authServices";
 const Details = () => {
   const querystring = window.location.search;
   const URLParams = new URLSearchParams(querystring);
@@ -10,8 +10,8 @@ const Details = () => {
 
   const [details, setDetails] = useState([]);
   const getData = () => {
-    axios
-      .get("http://127.0.0.1:8000/api/publish-tender/")
+    auth
+      .getTenders()
       .then((res) => {
         setDetails(res.data);
       })

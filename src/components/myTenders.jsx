@@ -22,6 +22,7 @@ const MyTenders = () => {
   const filtered = tenders.filter((x) => x.organization_name === email);
   return (
     <div className="container">
+      <h4 className="text-center mb-5 mt-3">My Tenders</h4>
       {filtered
         .sort((a, b) => b.id - a.id)
         .map((post) => {
@@ -33,7 +34,12 @@ const MyTenders = () => {
                 <p class="card-text">Sector: {post.category}</p>
                 <p class="card-text">Description: {post.description}</p>
                 <p class="card-text">Action Deadline: {post.last_date}</p>
-
+                <a href={post.file_uploaded} download="My_File.pdf">
+                  {" "}
+                  Soft Copy{" "}
+                </a>
+                <br />
+                <br />
                 <Button
                   id="btns"
                   onClick={(e) => {
@@ -43,13 +49,22 @@ const MyTenders = () => {
                   View Details
                 </Button>
                 <Button
-                  id="btns"
+                  color="danger"
                   onClick={(e) => {
                     auth.deleteTender(post.id);
                     window.location.reload();
                   }}
                 >
                   Delete Tender
+                </Button>
+                <Button
+                  id="btns"
+                  onClick={(e) => {
+                    window.location.href =
+                      "/viewbids/?id=" + post.id + "&tender=" + post.title;
+                  }}
+                >
+                  View Bids
                 </Button>
               </div>
             </div>

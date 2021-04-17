@@ -1,7 +1,9 @@
 import React from "react";
 import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
 import { NavLink } from "react-router-dom";
-
+import PublicIcon from "@material-ui/icons/Public";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import CategoryIcon from "@material-ui/icons/Category";
 const Footer = () => {
   return (
     <MDBFooter
@@ -15,7 +17,10 @@ const Footer = () => {
             <p>About e-tender.</p>
           </MDBCol>
           <MDBCol md="3">
-            <h5 className="title">Regions</h5>
+            <h5 className="title">
+              <PublicIcon />
+              Regions
+            </h5>
             <ul>
               <li className="list-unstyled">
                 <a href="#!">Punjab</a>
@@ -32,7 +37,10 @@ const Footer = () => {
             </ul>
           </MDBCol>
           <MDBCol md="3">
-            <h5 className="title">Popular Sectors</h5>
+            <h5 className="title">
+              <CategoryIcon />
+              Popular Sectors
+            </h5>
             <ul>
               <li className="list-unstyled">
                 <a href="#!">Construction Tenders</a>
@@ -51,7 +59,10 @@ const Footer = () => {
             </ul>
           </MDBCol>
           <MDBCol md="3">
-            <h5 className="title">Useful Links</h5>
+            <h5 className="title">
+              <ExitToAppIcon />
+              Useful Links
+            </h5>
             <ul>
               <li className="list-unstyled">
                 <a href="#!">Privacy Policy</a>

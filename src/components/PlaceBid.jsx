@@ -1,71 +1,127 @@
-import React, { Component } from "react";
-import Form from "../common/form";
-import Joi from "joi-browser";
+import React, { useState } from "react";
+import Form from "react-bootstrap/Form";
+import Button from "@material-ui/core/Button";
+
 import * as auth from "../services/authServices";
 import { toast } from "react-toastify";
 toast.configure();
 
-class Bid extends Form {
-  state = {
-    data: {
-      name: "",
-      contact: "",
-      no_of_days: "",
-      bidding_amount: "",
-      tenderId: "",
-    },
-    errors: {},
+const PlaceBid = () => {
+  const user = auth.getCurrentUser();
+
+  const [name, setName] = useState();
+  const [contact, setContact] = useState();
+  const [no_of_days, setDays] = useState();
+  const [bidding_amount, setBidding] = useState();
+  const [tenderID, settenderID] = useState();
+  const [file, setFile] = useState();
+  const querystring = window.location.search;
+  const URLParams = new URLSearchParams(querystring);
+  const id = URLParams.get("id");
+  const handleSubmit = async () => {
+    var data = new FormData();
+    data.append("name", name);
+    data.append("no_of_days", no_of_days);
+    data.append("bidding_amount", bidding_amount);
+    data.append("contact", contact);
+    data.append("tenderId", id);
+    data.append("file_uploaded", file);
+    data.append("postedBy", user);
+    data.append("status", "unavailable");
+
+    const response = await auth.postBid(data);
+    console.log(response);
   };
 
-  schema = {
-    name: Joi.string().required().label("Name"),
-    contact: Joi.string().required().label("Contact"),
-    no_of_days: Joi.string().required().label("No of days"),
-    bidding_amount: Joi.string().required().label("Bidding Amount"),
-    tenderId: Joi.string().required().label("Tender Idt"),
-  };
+  return (
+    <div className="col-md-6 mx-auto text-center form p-4">
+      <h5 className="mb-5 mt-3">Place Bid</h5>
 
-  doSubmit = async () => {
-    try {
-      const { data } = this.state;
-      await auth.postBid(
-        data.name,
-        data.contact,
-        data.no_of_days,
-        data.tenderId,
-        data.bidding_amount
-      );
-      window.location = "/";
-      toast.success("Successful Login");
-    } catch (ex) {
-      if (ex.response && ex.respone.status === 400) {
-        const errors = { ...this.state.errors };
-        errors.username = ex.response.data;
-        this.setState({ errors });
-        toast.error("An error occurred");
-      }
-    }
-  };
+      <Form>
+        <div className="form-group">
+          <div className="row">
+            <input
+              type="text"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              className="form-control"
+              placeholder="Enter your Organization Name"
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="row">
+            <input
+              type="text"
+              placeholder="ex. +92xxxxxxxxxx"
+              onChange={(e) => {
+                setContact(e.target.value);
+              }}
+              className="form-control"
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="row">
+            <input
+              type="number"
+              placeholder="Enter no of days"
+              onChange={(e) => {
+                setDays(e.target.value);
+              }}
+              className="form-control"
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="row">
+            <input
+              type="number"
+              placeholder="Enter your bidding amount"
+              onChange={(e) => {
+                setBidding(e.target.value);
+              }}
+              className="form-control"
+            />
+          </div>
+        </div>
+        <div className="form-group">
+          <div className="row">
+            <input
+              type="file"
+              placeholder="choose file"
+              onChange={(e) => {
+                setFile(e.target.files[0]);
+              }}
+              className="form-control"
+            />
+          </div>
+        </div>
+        {user && (
+          <Button
+            variant="contained"
+            color="primary"
+            id="btns"
+            onClick={handleSubmit}
+          >
+            Submit
+          </Button>
+        )}
+        {!user && (
+          <Button
+            variant="contained"
+            color="primary"
+            disabled
+            onClick={handleSubmit}
+            id="btns"
+          >
+            Submit
+          </Button>
+        )}
+      </Form>
+    </div>
+  );
+};
 
-  render() {
-    const querystring = window.location.search;
-    const URLParams = new URLSearchParams(querystring);
-    const id = URLParams.get("id");
-
-    return (
-      <div className="col-md-6 mx-auto text-center form p-4" style={{}}>
-        <h1 style={{ marginBottom: "53px" }}>Publish Tender</h1>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderInput("name", "Organization Name")}
-          {this.renderInput("contact", "Contact")}
-          {this.renderInput("no_of_days", "No Of Days")}
-          {this.renderInput("bidding_amount", "Bidding Amount")}
-          {this.renderInput1("tenderId", "Tender ID", id)}
-          {this.renderButton("Publish")}
-        </form>
-      </div>
-    );
-  }
-}
-
-export default Bid;
+export default PlaceBid;
