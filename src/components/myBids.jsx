@@ -48,7 +48,14 @@ const MyBids = () => {
                 >
                   View Details
                 </Button>
-                <Button id="btns">Delete Bid</Button>
+                <Button id="btns"
+                
+                onClick={(e) => {
+                  auth.deleteBid(post.id);
+                  window.location.reload();
+                }}
+                
+                >Delete Bid</Button>
               </div>
             </div>
           );
